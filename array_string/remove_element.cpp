@@ -11,15 +11,17 @@ public:
             if(nums[i] != val){
                 k++;
             }
-            if((i != nums.size() - 1) && nums[i] == val && nums[i+1] == val){
-                space++;
-                continue;
-            }
-            if((i != nums.size() - 1) && nums[i] == val && nums[i+1] != val){
-                int temp = nums[i-space];
-                nums[i-space] = nums[i+1];
-                nums[i+1] = temp;
-                k++;
+            if((i != nums.size() - 1) && nums[i] == val){
+                if(nums[i+1] == val){
+                    space++;
+                    continue;
+                }
+                if(nums[i+1] != val){
+                    int temp = nums[i-space];
+                    nums[i-space] = nums[i+1];
+                    nums[i+1] = temp;
+                    k++;
+                }
             }
         }
         return k;
